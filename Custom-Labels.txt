@@ -1,6 +1,6 @@
 //****New Custom Label 2: TAL_Opportunity_TDSSManagerBatch_Query
-SELECT Id, Field, OpportunityId, Opportunity.Business_Unit__c,Opportunity.Rep_Region__c,OldValue, NewValue, CreatedDate FROM OpportunityFieldHistory 
-WHERE Field = 'StageName' AND Opportunity.StageName = 'Closed Won' AND Opportunity.Business_Unit__c ='LDC' 
-AND (Opportunity.Rep_Region__c LIKE 'TAL%-AD%' OR Opportunity.Rep_Region__c LIKE 'TAL%-HY%') AND CreatedDate >= LAST_BATCH_RUN_DATETIME
-ORDER BY CreatedDate DESC
+SELECT Id, Field, OpportunityId, Opportunity.Business_Unit__c,Opportunity.Rep_Region__c,OldValue, NewValue, CreatedDate 
+FROM OpportunityFieldHistory WHERE Field = 'StageName' AND Opportunity.StageName = 'Closed Won' AND Opportunity.Business_Unit__c ='LDC' 
+AND (Opportunity.Rep_Region__c LIKE 'TAL%-AD%' OR Opportunity.Rep_Region__c LIKE 'TAL%-HY%') AND Opportunity.Is_Split__c = false 
+AND Opportunity.Deal_Alert_Sent__c = false AND CreatedDate >= LAST_BATCH_RUN_DATETIME ORDER BY CreatedDate DESC
 
